@@ -25,6 +25,12 @@ public class CommentController {
     private final CommentService commentService;
     private final PostService postService;
 
+    /**
+     * Create method for creating new Comment
+     * @param comment - new Comment
+     * @param postId - ID of 
+     * @return
+     */
     @PostMapping("/{postId}/comments")
     public Comment create(@RequestBody Comment comment, @PathVariable("postId") Long postId) {
         Post post = this.postService.findById(postId);
