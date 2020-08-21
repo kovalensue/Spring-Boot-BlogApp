@@ -26,10 +26,10 @@ public class CommentController {
     private final PostService postService;
 
     /**
-     * Create method for creating new Comment
+     * Create method for creating new Comment.
      * @param comment - new Comment
-     * @param postId - ID of 
-     * @return
+     * @param postId - ID of Post we are commenting
+     * @return newly created Comment
      */
     @PostMapping("/{postId}/comments")
     public Comment create(@RequestBody Comment comment, @PathVariable("postId") Long postId) {
@@ -37,11 +37,21 @@ public class CommentController {
         return this.commentService.create(comment.getUserName(), comment.getEmail(), comment.getText(), post);
     }
 
+    /**
+     * Get method to retrieve details about Comment.
+     * @param id - id of a Comment
+     * @return found Comment
+     */
     @GetMapping("/{postId}/comments/{id}")
     public Comment findById(@PathVariable Long id) {
         return this.commentService.findById(id);
     }
 
+    /**
+     * 
+     * @param postId
+     * @return
+     */
     @GetMapping("/{postId}/comments")
     public List<Comment> findAllByPostID(@PathVariable("postId") Long postId) {
         return this.commentService.findAllByPostID(postId);
