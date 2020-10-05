@@ -34,7 +34,10 @@ public class CommentController {
     @PostMapping("/{postId}/comments")
     public Comment create(@RequestBody Comment comment, @PathVariable("postId") Long postId) {
         Post post = this.postService.findById(postId);
-        return this.commentService.create(comment.getUserName(), comment.getEmail(), comment.getText(), post);
+        return this.commentService.create(comment.getUserName()
+            , comment.getEmail()
+            , comment.getText()
+            , post);
     }
 
     /**
