@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -34,6 +35,9 @@ public class Post {
     @JsonManagedReference
     //@OrderBy
     private List<Comment> postCommnets;
+
+    @ManyToMany
+    private List<Tag> postTags;
 
     /**
      * Constructor for creation of Post obejct when we still don't know the ID. Also there is no argument for publish
